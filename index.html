@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Bot - Status Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fab fa-whatsapp"></i>
+                    <h1>AegisBot</h1>
+                </div>
+                <div class="status-indicator" id="statusIndicator">
+                    <div class="status-dot offline" id="statusDot"></div>
+                    <span id="statusText">Offline</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>🤖 Dein AegisBot</h2>
+                <p>Ein leistungsstarker Bot mit Economy-System, Pet-System und vielen nützlichen Features!</p>
+                
+                <!-- Bot Status Card -->
+                <div class="status-card" id="statusCard">
+                    <div class="status-header">
+                        <h3><i class="fas fa-robot"></i> Bot Status</h3>
+                        <div class="refresh-btn" onclick="refreshStatus()">
+                            <i class="fas fa-sync-alt" id="refreshIcon"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="status-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon online">
+                                <i class="fas fa-power-off"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Status</span>
+                                <span class="stat-value" id="botStatus">Lädt...</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Uptime</span>
+                                <span class="stat-value" id="uptime">Lädt...</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Benutzer</span>
+                                <span class="stat-value" id="totalUsers">Lädt...</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Gruppen</span>
+                                <span class="stat-value" id="totalGroups">Lädt...</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-paw"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Pets</span>
+                                <span class="stat-value" id="totalPets">Lädt...</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Version</span>
+                                <span class="stat-value" id="version">2.0.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Join Button -->
+                <div class="join-section">
+                    <h3>🚀 Bot zu deiner Gruppe hinzufügen</h3>
+                    <p>Klicke auf den Button und sende: <code>/join &lt;dein-gruppenlink&gt;</code></p>
+                    <a href="https://wa.me/16362289238?text=/join%20" class="join-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Bot einladen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="features-content">
+                <h2>✨ Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h3>Economy System</h3>
+                        <p>Verdiene Geld, kaufe Items, spiele Casino-Spiele und baue dein Vermögen auf!</p>
+                        <ul>
+                            <li>💰 Daily Rewards</li>
+                            <li>🎰 Casino Spiele</li>
+                            <li>🏪 Shop System</li>
+                            <li>🏠 Häuser kaufen</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <h3>Pet System</h3>
+                        <p>Kaufe, pflege und trainiere deine virtuellen Haustiere!</p>
+                        <ul>
+                            <li>🐱 8 verschiedene Pet-Typen</li>
+                            <li>🌟 Evolution System</li>
+                            <li>⚔️ Pet Kämpfe</li>
+                            <li>🏆 Achievements</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Moderation</h3>
+                        <p>Leistungsstarke Tools für Gruppenadministratoren!</p>
+                        <ul>
+                            <li>⚠️ Warn System</li>
+                            <li>🔇 Mute/Unmute</li>
+                            <li>🚫 Badword Filter</li>
+                            <li>🔒 Gruppe sperren</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Utilities</h3>
+                        <p>Nützliche Tools für den Alltag!</p>
+                        <ul>
+                            <li>🌤️ Wetter Abfragen</li>
+                            <li>🔍 Wikipedia Suche</li>
+                            <li>🌐 Übersetzer</li>
+                            <li>📊 Gruppen Statistiken</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Commands Section -->
+        <section class="commands">
+            <div class="commands-content">
+                <h2>📋 Beliebte Befehle</h2>
+                <div class="commands-grid">
+                    <div class="command-category">
+                        <h3><i class="fas fa-coins"></i> Economy</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>/balance</code>
+                                <span>Kontostand anzeigen</span>
+                            </div>
+                            <div class="command-item">
+                                <code>/daily</code>
+                                <span>Tägliche Belohnung</span>
+                            </div>
+                            <div class="command-item">
+                                <code>/work</code>
+                                <span>Arbeiten gehen</span>
+                            </div>
+                            <div class="command-item">
+                                <code>/shop</code>
+                                <span>Shop öffnen</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="command-category">
+                        <h3><i class="fas fa-paw"></i> Pets</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>/petshop</code>
+                                <span>Pet Shop anzeigen</span>
+                            </div>
+                            <div class="command-item">
+                                <code>/petbuy katze Fluffy</code>
+                                <span>Pet kaufen</span>
+                            </div>
+                            <div class="command-item">
+                                <code>/pet</code>
+                                <span>Pet Status</span>
+                            </div>
+                            <div class="command-item">
+                                <code>/petfeed</code>
+                                <span>Pet füttern</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="command-category">
+                        <h3><i class="fas fa-shield-alt"></i> Moderation</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>/warn @user</code>
+                                <span>User verwarnen</span>
+                            </div>
+                            <div class="command-item">
+                                <code>/mute @user</code>
+                                <span>User stumm schalten</span>
+                            </div>
+                            <div class="command-item">
+                                <code>/kick @user</code>
+                                <span>User kicken</span>
+                            </div>
+                            <div class="command-item">
+                                <code>/lock</code>
+                                <span>Gruppe sperren</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="command-category">
+                        <h3><i class="fas fa-tools"></i> Utilities</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>/weather Berlin</code>
+                                <span>Wetter abfragen</span>
+                            </div>
+                            <div class="command-item">
+                                <code>/translate en Hallo</code>
+                                <span>Text übersetzen</span>
+                            </div>
+                            <div class="command-item">
+                                <code>/wiki Einstein</code>
+                                <span>Wikipedia Suche</span>
+                            </div>
+                            <div class="command-item">
+                                <code>/menu</code>
+                                <span>Alle Befehle</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy AegisBot</p>
+                <div class="footer-links">
+                    <span>Status wird alle 30 Sekunden aktualisiert</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
